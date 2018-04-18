@@ -1,0 +1,39 @@
+body{font-family: "Verdana,sans-serif";}
+.clearfix { display: inline-block; }
+.clearfix:after{visibility: hidden;display: table;font-size: 0;content: " ";clear: both;height: 0;}
+.extend{margin:0 -15px;}
+.container{width:98%; margin: 0 auto;  padding: 15px;}
+
+.main{float:left; width:100%; padding:15px; background: #f9f9f9; box-sizing: border-box;}
+.logo{font-size: 2em; color: #3f65b9; text-transform: uppercase;}
+.main-nav{background: #ccc; display: block; padding:10px 0; margin: 10px 0} 
+.main-nav ul {padding:0; margin:0; float:left;}
+.main-nav ul li{float:left; padding:0; list-style-type: none;}
+.main-nav ul li a{padding: 10px; text-decoration: none; color:#3a6aca; background: #ccc;}
+.main-nav ul li a:hover, .main-nav ul li a.active{background:#eee; color:#7225e6;}
+
+
+
+.btn {padding:6px 12px; border-radius: 4px;  font-weight: 400; cursor: pointer;}
+.btn-primary{background: #337ab7;color: #fff;padding: 7px;border:1px solid #2e6da4;}
+.btn-primary:hover{background: #286090; border-color: #204d74;}
+
+h1, h2, h3, h4{color: #337ab7; border-bottom: 1px solid #337ab7; margin: 0; margin-bottom: 15px;}
+
+/* Form control starts */
+.form-group{margin-bottom: 10px;}
+.form-group:after{visibility: hidden;display: table;font-size: 0;content: " ";clear: both;height: 0;}
+input[type="text"], 
+input[type="email"],
+input[type="password"], 
+textarea {
+    border-radius: 2px; height:20px; border:1px solid #ccc; padding-left:5px; width:100%; box-sizing:border-box;
+}
+textarea{height:60px;}
+input.ng-invalid, textarea.ng-invalid{border-left:4px solid #b12828;}
+input.ng-valid, textarea.ng-valid{border-left:4px solid green;}
+.alert{padding:3px 3px; border:1px solid; margin-top:.3rem; font-size:13px; border-radius: 2px; box-sizing:border-box;}
+
+.alert-danger{background:#f8d7da; border-color: #f5c6cb; color:#721c24;}
+.alert-success{background:#dff0d8; border-color: #d6e9c6; color:#3c763d;}
+/* Form control ends */

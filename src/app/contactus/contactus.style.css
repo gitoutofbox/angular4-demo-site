@@ -1,0 +1,7 @@
+.contactus-wrap .form-group{margin-bottom: 10px;}
+.contactus-wrap .form-group label{vertical-align:top; width:30%; float:left;box-sizing: border-box;}
+
+.contactus-wrap .form-group label + .form-control[type="text"],
+.contactus-wrap .form-group label + .form-control[type="email"],
+.contactus-wrap .form-group label + .form-control
+{width:70%;box-sizing: border-box; display: inline-block;}

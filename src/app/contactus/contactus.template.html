@@ -1,0 +1,36 @@
+<div class="contactus-wrap">
+    <form #contactusData="ngForm" (ngSubmit)="onSubmit(contactusData)" novalidate>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <div class="form-control">
+                <input type="text" #nameRef="ngModel" name="name" id="name" ngModel required/>
+                <div *ngIf="(contactusData.submitted || !nameRef.pristine) && !nameRef.valid" class="alert alert-danger">
+                    Please enter your name 
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <div class="form-control">
+                <input type="email" #emailRef="ngModel" name="email" id="email" ngModel required  email="true"/>
+                <div *ngIf="emailRef.errors && (contactusData.submitted || (emailRef.dirty || emailRef.touched) )" class="alert alert-danger">
+                    <div *ngIf="emailRef.errors.required">Please enter your email </div>
+                    <div *ngIf="!emailRef.errors.required && emailRef.errors.email">Please enter valid email </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <div class="form-control">
+                <textarea #descriptionRef="ngModel" name="description" id="description" ngModel required></textarea>
+                <div *ngIf="(contactusData.submitted || !descriptionRef.pristine) && !descriptionRef.valid" class="alert alert-danger">
+                    Please enter description
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>&nbsp;</label>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

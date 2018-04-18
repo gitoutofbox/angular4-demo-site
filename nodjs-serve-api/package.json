@@ -1,0 +1,19 @@
+{
+  "name": "news-api-serve",
+  "version": "1.0.0",
+  "description": "serve api for angular2 news manager",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Sourav Paul",
+  "license": "ISC"
+}

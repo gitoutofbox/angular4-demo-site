@@ -1,0 +1,13 @@
+<div *ngIf="!headlineOnly">
+    <div [myBox]="borderColor" *ngFor="let news of newsList">
+        <h4 class="news-header">{{news.headline}}</h4>
+        <div class="content">{{news.content}}</div>
+    </div>
+</div>
+
+<div *ngIf="headlineOnly">
+    <div [myBox]="borderColor" *ngFor="let news of newsList |slice: 0: noOfRecords; let i= index">
+        <a href="javascript:void(0);" (click)="openNewsModal(news)" class="news-header">{{i+1}}. {{news.headline}}</a>
+    </div>
+    <myModal [showModal]="showModal" (hideModalEvent)="hideModalEvent($event)" [data]="selectedNews"></myModal>
+</div>

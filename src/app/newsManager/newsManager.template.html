@@ -1,0 +1,58 @@
+<div>
+    <div class="main">
+        <table class="news-list">
+            <thead>
+                <tr>
+                    <th width="30%">Headline</th>
+                    <th width="55%">Content</th>
+                    <th width="15%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let news of newsList"> 
+                    <td>{{news.headline}}</td>
+                    <td>{{news.content}}</td>
+                    <td>
+                        <a href="#" (click)="editNews(news)">Edit</a>
+                        <a href="#" (click)="deleteNews(news)">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="sidebar">
+        <div>
+            <h2 class="header">Add/Edit News</h2>
+            <div class="alert alert-success" *ngIf="apiResponse.status == 'success'">{{apiResponse.message}}</div>
+            <div class="alert alert-danger" *ngIf="apiResponse.status == 'fail'">{{apiResponse.message}}</div>
+                
+            <div class="contactus-wrap">
+                    <form [formGroup]="newsForm" (ngSubmit)="onSubmit(newsForm)" novalidate>
+                        <div class="form-group">
+                            <label for="headline">Headlne:</label>
+                            <div class="form-control">
+                                <input type="text" name="headline" id="headline" formControlName="headline"/>
+                                <div class="alert alert-danger" *ngIf="newsForm.controls.headline.invalid && (!newsForm.controls.headline.pristine || submitted)">
+                                    <div *ngIf="newsForm.controls.headline.hasError('required')">Headline is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Description:</label>
+                            <div class="form-control">
+                                <textarea name="content" id="content"  formControlName="content"></textarea>
+                                <div class="alert alert-danger" *ngIf="newsForm.controls.content.invalid && (!newsForm.controls.content.pristine || submitted)">
+                                        <div *ngIf="newsForm.controls.content.hasError('required')">Content is required</div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-primary" (click)="cancelEditNews()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>

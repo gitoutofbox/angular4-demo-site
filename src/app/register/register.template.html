@@ -1,0 +1,90 @@
+<div class="register-wrap">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">   
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <div class="form-control">
+                <input type="email" name="email" id="email"  formControlName="email" />
+                <div class="alert alert-danger" *ngIf="registerForm.controls.email.invalid && (!registerForm.controls.email.pristine || submitted)">
+                    <div *ngIf="registerForm.controls.email.hasError('required')">Name is required</div>
+                    <div *ngIf="registerForm.controls.email.hasError('email')">Please enter valid email</div>
+                </div>
+
+            </div>
+        </div>
+        <div formGroupName="passwords" class="formGroupPasswords">
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="form-control">
+                    <input type="text" name="password" id="password" formControlName="password" (keyup)="checkPasswordStrength()"/>
+                    
+                    <div>
+                        <div class="alert alert-danger" *ngIf="registerForm.controls.passwords.controls.password.hasError('required') && (submitted || !registerForm.controls.passwords.controls.password.pristine)">
+                            Password is required
+                        </div>
+                        
+                        <div class="alert" [ngClass]="passwordStrength.oneSmallLetter?'alert-success':'alert-danger'">Minimum 1 Small letter</div>
+                        <div class="alert" [ngClass]="passwordStrength.oneCapsLetter?'alert-success':'alert-danger'">Minimum 1 Capital letter</div>
+                        <div class="alert" [ngClass]="passwordStrength.oneNumber?'alert-success':'alert-danger'">Minimum 1 Number</div>
+                        <div class="alert" [ngClass]="passwordStrength.oneSpecial?'alert-success':'alert-danger'">Minimum 1 special character</div>
+                        <div class="alert" [ngClass]="registerForm.controls.passwords.controls.password.hasError('minlength') || registerForm.controls.passwords.controls.password.hasError('required')?'alert-danger':'alert-success'">Minimum 8 characters</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div formGroupName="passwords" class="formGroupPasswords">
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <div class="form-control">
+                    <input type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword" />    
+ 
+                    <div class="alert alert-danger" *ngIf="registerForm.controls.passwords.controls.confirmPassword.hasError('required') && (submitted || !registerForm.controls.passwords.controls.confirmPassword.pristine)">
+                        Confirm Password is required
+                    </div>
+
+                    <div class="alert alert-danger" *ngIf="!registerForm.controls.passwords.controls.confirmPassword.hasError('required') && registerForm.controls.passwords.hasError('passwordMatch')">Did not match with Password</div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label for="name">Name:</label>
+                <div class="form-control">
+                    <input type="text" name="name" id="name" formControlName="name" />                    
+                    <div class="alert alert-danger" *ngIf="registerForm.controls.name.invalid && (!registerForm.controls.name.pristine || submitted)">
+                        <div *ngIf="registerForm.controls.name.hasError('required')">Name is required</div>
+                        <div *ngIf="registerForm.controls.name.hasError('minlength')">Minimum 5 character required</div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <div class="form-control">
+                <input type="text" name="phone" id="phone" formControlName="phone" />
+                <div class="alert alert-danger" *ngIf="registerForm.controls.phone.invalid && (!registerForm.controls.phone.pristine || submitted)">
+                        <div *ngIf="registerForm.controls.phone.hasError('required')">Phone number is required</div>
+                        <div *ngIf="registerForm.controls.phone.hasError('minlength')">Phone number must be a {{registerForm.controls.phone.errors.minlength.requiredLength}} digit number</div>
+                        <div *ngIf="registerForm.controls.phone.hasError('maxlength')">Phone number must be a {{registerForm.controls.phone.errors.maxlength.requiredLength}} digit number</div>
+                        <div *ngIf="!registerForm.controls.phone.hasError('minlength') && !registerForm.controls.phone.hasError('maxlength') && registerForm.controls.phone.hasError('pattern')">Invalid phone number</div>
+                    </div>               
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">About you:</label>
+            <div class="form-control">
+                <textarea name="description" id="description" formControlName="about" ></textarea>                
+            </div>
+        </div>
+        <div class="form-group">
+            <label>&nbsp;</label>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="about-register">
+        <h2 class="header">Reason to Register</h2>
+    Register to get access to coming soon
+</div>
